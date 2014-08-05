@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="authenticationManager" class="org.springframework.security.authentication.ProviderManager">
+		<property name="providers">
+			<list>
+			    <ref bean="ldapAuthenticationProvider" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="ldapAuthenticationProvider"
+		class="org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider">
+		<constructor-arg value="qcorpaa.aa.com" />
+		<constructor-arg value="ldaps://dc1.qcorpaa.aa.com" />
+	</bean>
+	
+	<!--  Mapping of Active Directory groups (memberOf) to GigaSpaces XAP authorities -->
+	<bean id="ldapGroupMapper" class="org.openspaces.security.ldap.ActiveDirectoryGroupMapper">
+     <property name="groupMap"> 
+        <map>
+           <entry key="L_EDCS_ADMIN" value="GridPrivilege MANAGE_GRID,GridPrivilege MANAGE_PU,GridPrivilege PROVISION_PU,MonitorPrivilege MONITOR_JVM,MonitorPrivilege MONITOR_PU,SpacePrivilege WRITE,SpacePrivilege READ,SpacePrivilege TAKE,SpacePrivilege ALTER,SpacePrivilege EXECUTE"/>
+           <entry key="L_EDCS_DEPLY" value="GridPrivilege MANAGE_PU,MonitorPrivilege MONITOR_JVM,MonitorPrivilege MONITOR_PU"/>
+           <entry key="L_EDCS_CACHE" value="MonitorPrivilege MONITOR_PU,SpacePrivilege WRITE,SpacePrivilege READ,SpacePrivilege TAKE,SpacePrivilege ALTER,SpacePrivilege EXECUTE"/>
+           <entry key="L_EDCS_READ" value="MonitorPrivilege MONITOR_PU,SpacePrivilege READ"/>
+        </map>
+      </property> 
+   </bean>
+
+</beans>
