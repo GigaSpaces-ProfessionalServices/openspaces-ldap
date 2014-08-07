@@ -11,8 +11,8 @@
 
 	<bean id="ldapAuthenticationProvider"
 		class="org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider">
-		<constructor-arg value="qcorpaa.aa.com" />
-		<constructor-arg value="ldaps://dc1.qcorpaa.aa.com" />
+		<constructor-arg value="gigaspaces.com" />
+		<constructor-arg value="ldaps://dc1.sales.gigaspaces.com" />
 	</bean>
 	
 	<!--  Mapping of Active Directory groups (memberOf) to GigaSpaces XAP authorities -->
