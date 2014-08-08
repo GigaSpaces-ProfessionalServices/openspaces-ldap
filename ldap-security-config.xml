@@ -19,10 +19,10 @@
 	<bean id="ldapGroupMapper" class="org.openspaces.security.ldap.ActiveDirectoryGroupMapper">
      <property name="groupMap"> 
         <map>
-           <entry key="L_EDCS_ADMIN" value="GridPrivilege MANAGE_GRID,GridPrivilege MANAGE_PU,GridPrivilege PROVISION_PU,MonitorPrivilege MONITOR_JVM,MonitorPrivilege MONITOR_PU,SpacePrivilege WRITE,SpacePrivilege READ,SpacePrivilege TAKE,SpacePrivilege ALTER,SpacePrivilege EXECUTE"/>
-           <entry key="L_EDCS_DEPLY" value="GridPrivilege MANAGE_PU,MonitorPrivilege MONITOR_JVM,MonitorPrivilege MONITOR_PU"/>
-           <entry key="L_EDCS_CACHE" value="MonitorPrivilege MONITOR_PU,SpacePrivilege WRITE,SpacePrivilege READ,SpacePrivilege TAKE,SpacePrivilege ALTER,SpacePrivilege EXECUTE"/>
-           <entry key="L_EDCS_READ" value="MonitorPrivilege MONITOR_PU,SpacePrivilege READ"/>
+           <entry key="Administrators" value="GridPrivilege MANAGE_GRID,GridPrivilege MANAGE_PU,GridPrivilege PROVISION_PU,MonitorPrivilege MONITOR_JVM,MonitorPrivilege MONITOR_PU,SpacePrivilege WRITE,SpacePrivilege READ,SpacePrivilege TAKE,SpacePrivilege ALTER,SpacePrivilege EXECUTE"/>
+           <entry key="Deployers" value="GridPrivilege MANAGE_PU,MonitorPrivilege MONITOR_JVM,MonitorPrivilege MONITOR_PU"/>
+           <entry key="Cache_Users" value="MonitorPrivilege MONITOR_PU,SpacePrivilege WRITE,SpacePrivilege READ,SpacePrivilege TAKE,SpacePrivilege ALTER,SpacePrivilege EXECUTE"/>
+           <entry key="Cache_ReadOnly" value="MonitorPrivilege MONITOR_PU,SpacePrivilege READ"/>
         </map>
       </property> 
    </bean>
