@@ -19,6 +19,11 @@
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.gigaspaces</groupId>
+            <artifactId>gs-openspaces</artifactId>
+        </dependency>
         
         <dependency>
 			<groupId>org.springframework.ldap</groupId>
@@ -31,9 +36,6 @@
 			<artifactId>spring-security-ldap</artifactId>
 			<version>3.2.4.RELEASE</version>
 		</dependency>
-		
-
-   
     </dependencies>
     <build>
         <finalName>openspaces-ldap-test</finalName>
@@ -47,6 +49,14 @@
                     <descriptors>
                         <descriptor>src/main/assembly/assembly.xml</descriptor>
                     </descriptors>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>org.openspaces.security.ldap.Main</mainClass>
+                        </manifest>
+                    </archive>
                 </configuration>
                 <executions>
                     <execution>

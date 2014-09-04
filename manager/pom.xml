@@ -11,6 +11,12 @@
         <artifactId>openspaces-ldap</artifactId>
         <version>1.0</version>
     </parent>
+    <dependencies>
+        <dependency>
+            <groupId>com.gigaspaces</groupId>
+            <artifactId>gs-openspaces</artifactId>
+        </dependency>
+    </dependencies>
     <build>
         <finalName>openspaces-ldap-manager</finalName>
         <resources>
