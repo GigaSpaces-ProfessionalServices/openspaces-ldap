@@ -7,7 +7,7 @@ OpenSpaces Security Manager for Active Directory integration. Once built, you'll
 ##### manager (openspaces-ldap-manager.jar)
 Spring security bridge for Active Directory. Should be configured via a spring-security.properties file
 
-    com.gs.security.security-manager.class=org.openspaces.security.spring.ActiveDirectorySpringSecurityManager
+    com.gs.security.security-manager.class=org.openspaces.security.ldap.ActiveDirectorySpringSecurityManager
     spring-security-config-location = ../config/security/ldap-security-config.xml
 
 
