@@ -54,7 +54,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-openspaces-plugin</artifactId>
-				<version>9.7.0-10496-RELEASE</version>
+				<version>10.0.1-11800-RELEASE</version>
 			</plugin>
 		</plugins>
 	</build>
@@ -65,7 +65,7 @@
       <dependency>
         <groupId>com.gigaspaces</groupId>
         <artifactId>gs-openspaces</artifactId>
-        <version>9.7.0-10496-RELEASE</version>
+        <version>10.1.0-12595-RC</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
