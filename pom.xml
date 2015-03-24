@@ -26,25 +26,6 @@
 		<module>manager</module>
 		<module>test</module>
 	</modules>
-	<dependencies>
-		<dependency>
-			<groupId>com.gigaspaces</groupId>
-			<artifactId>gs-openspaces</artifactId>
-			<version>9.7.0-10496-RELEASE</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.8.1</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
 	<build>
 		<defaultGoal>package</defaultGoal>
 		<testResources>
@@ -73,7 +54,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-openspaces-plugin</artifactId>
-				<version>9.7.0-10496-RELEASE</version>
+				<version>10.0.1-11800-RELEASE</version>
 			</plugin>
 		</plugins>
 	</build>
@@ -84,9 +65,7 @@
       <dependency>
         <groupId>com.gigaspaces</groupId>
         <artifactId>gs-openspaces</artifactId>
-        <version>9.7.0-10496-RELEASE</version>
-        <type>pom</type>
-        <scope>import</scope>
+        <version>10.1.0-12595-RC</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
