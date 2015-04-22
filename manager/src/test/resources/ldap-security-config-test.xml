@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mockito="http://www.mockito.org/spring/mockito"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.mockito.org/spring/mockito http://www.mockito.org/spring/mockito.xsd">
+
+    <mockito:mock id="authenticationManager" class="org.springframework.security.authentication.ProviderManager" />
+
+    <mockito:mock id="ldapAuthenticationProvider"
+          class="org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider" />
+
+    <!--<mockito:mock id="ldapGroupMapper" class="org.openspaces.security.ldap.ActiveDirectoryGroupMapper" />-->
+
+    <bean id="ldapGroupMapper" class="org.openspaces.security.ldap.ActiveDirectoryGroupMapper">
+        <property name="groupMap">
+            <map>
+                <entry key="Administrators" value="GridPrivilege MANAGE_GRID,GridPrivilege MANAGE_PU,GridPrivilege PROVISION_PU,MonitorPrivilege MONITOR_JVM,MonitorPrivilege MONITOR_PU,SpacePrivilege WRITE,SpacePrivilege READ,SpacePrivilege TAKE,SpacePrivilege ALTER,SpacePrivilege EXECUTE"/>
+                <entry key="Deployers" value="GridPrivilege MANAGE_PU,MonitorPrivilege MONITOR_JVM,MonitorPrivilege MONITOR_PU"/>
+                <entry key="Cache_Users" value="MonitorPrivilege MONITOR_PU,SpacePrivilege WRITE,SpacePrivilege READ,SpacePrivilege TAKE,SpacePrivilege ALTER,SpacePrivilege EXECUTE"/>
+                <entry key="Cache_ReadOnly" value="MonitorPrivilege MONITOR_PU,SpacePrivilege READ"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="activeDirectorySpringSecurityManager" class="org.openspaces.security.ldap.ActiveDirectorySpringSecurityManager">
+        <property name="authenticationManager" ref="authenticationManager"/>
+        <property name="groupMapper" ref="ldapGroupMapper"/>
+    </bean>
+
+</beans>
