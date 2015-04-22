@@ -25,7 +25,7 @@ import static org.mockito.Mockito.when;
 
 @RunWith(Parameterized.class)
 @ContextConfiguration(loader = SpringockitoContextLoader.class, locations = "classpath:/ldap-security-config-test.xml")
-public class SecurityManagerParametrizedTest {
+public class SecurityManagerValidCasesTest {
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -42,7 +42,7 @@ public class SecurityManagerParametrizedTest {
 
     private String role;
 
-    public SecurityManagerParametrizedTest(String role, Privilege[] grantedPrivileges, Privilege[] forbiddenPrivileges){
+    public SecurityManagerValidCasesTest(String role, Privilege[] grantedPrivileges, Privilege[] forbiddenPrivileges){
         applicationContext = new ClassPathXmlApplicationContext("ldap-security-config-test.xml");
         manager = applicationContext.getBean("activeDirectorySpringSecurityManager", ActiveDirectorySpringSecurityManager.class);
         authenticationManager = applicationContext.getBean("authenticationManager", AuthenticationManager.class);
@@ -75,10 +75,10 @@ public class SecurityManagerParametrizedTest {
     public void testAuthorities(){
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
         authorities.add(new SimpleGrantedAuthority(role));
-        Authentication authentication = new UsernamePasswordAuthenticationToken("username", "password", authorities);
-        when(authenticationManager.authenticate(any(Authentication.class))).thenReturn(authentication);
-        com.gigaspaces.security.Authentication authenticate = manager.authenticate(new User("username", "password"));
-        GrantedAuthorities grantedAuthorities = authenticate.getGrantedAuthorities();
+        Authentication authenticationToken = new UsernamePasswordAuthenticationToken("username", "password", authorities);
+        when(authenticationManager.authenticate(any(Authentication.class))).thenReturn(authenticationToken);
+        com.gigaspaces.security.Authentication authentication = manager.authenticate(new User("username", "password"));
+        GrantedAuthorities grantedAuthorities = authentication.getGrantedAuthorities();
         for (Privilege privilege : grantedPrivileges){
             assertTrue(grantedAuthorities.isGranted(privilege));
         }

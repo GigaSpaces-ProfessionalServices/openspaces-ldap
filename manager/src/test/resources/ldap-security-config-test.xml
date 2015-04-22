@@ -10,8 +10,6 @@
     <mockito:mock id="ldapAuthenticationProvider"
           class="org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider" />
 
-    <!--<mockito:mock id="ldapGroupMapper" class="org.openspaces.security.ldap.ActiveDirectoryGroupMapper" />-->
-
     <bean id="ldapGroupMapper" class="org.openspaces.security.ldap.ActiveDirectoryGroupMapper">
         <property name="groupMap">
             <map>
