@@ -142,8 +142,7 @@ public class ActiveDirectorySpringSecurityManager implements SecurityManager {
 			}
 			
 			User user = new User(userDetails.getUsername(), userDetails.getPassword(), authoritiesList.toArray(new Authority[authoritiesList.size()]));
-			Authentication authentication = new Authentication(user);
-			return authentication;
+            return new Authentication(user);
 
 		} catch(Exception exception) {
 		    if (logger.isLoggable(Level.FINEST)) {
