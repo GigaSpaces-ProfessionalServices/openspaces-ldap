@@ -53,6 +53,7 @@ public class Main {
 		com.gigaspaces.security.Authentication authenticate = securityManager.authenticate(new User(username, password));
 		
 		UserDetails userDetails = authenticate.getUserDetails();
-		System.out.println("user: " + userDetails.getUsername() + " password: "	 + userDetails.getPassword() + " authorities: " + Arrays.toString(userDetails.getAuthorities()));
-	}
+		System.out.println("user: " + userDetails.getUsername() + " password: "	 + userDetails.getPassword());
+        System.out.println("authorities: " + Arrays.toString(userDetails.getAuthorities()));
+    }
 }

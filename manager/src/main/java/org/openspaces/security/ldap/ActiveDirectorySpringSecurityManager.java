@@ -26,6 +26,7 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -68,10 +69,15 @@ public class ActiveDirectorySpringSecurityManager implements SecurityManager {
     public static final String SPRING_SECURITY_CONFIG_LOCATION = "spring-security-config-location";
 
     private static final Logger logger = Logger.getLogger(SecurityManager.class.getPackage().getName());
-            
+
+    @Autowired
     private ApplicationContext applicationContext;
-	private AuthenticationManager authenticationManager;
-	private ActiveDirectoryGroupMapper groupMapper;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private ActiveDirectoryGroupMapper groupMapper;
 	
 	
 	/**
@@ -136,8 +142,7 @@ public class ActiveDirectorySpringSecurityManager implements SecurityManager {
 			}
 			
 			User user = new User(userDetails.getUsername(), userDetails.getPassword(), authoritiesList.toArray(new Authority[authoritiesList.size()]));
-			Authentication authentication = new Authentication(user);
-			return authentication;
+            return new Authentication(user);
 
 		} catch(Exception exception) {
 		    if (logger.isLoggable(Level.FINEST)) {
@@ -182,4 +187,16 @@ public class ActiveDirectorySpringSecurityManager implements SecurityManager {
 		throw new DirectoryAccessDeniedException(
 				"user/role information should be managed by a compatible external directory tools.");
 	}
+
+    public void setApplicationContext(ApplicationContext applicationContext) {
+        this.applicationContext = applicationContext;
+    }
+
+    public void setAuthenticationManager(AuthenticationManager authenticationManager) {
+        this.authenticationManager = authenticationManager;
+    }
+
+    public void setGroupMapper(ActiveDirectoryGroupMapper groupMapper) {
+        this.groupMapper = groupMapper;
+    }
 }
